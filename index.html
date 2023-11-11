@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'poppins', sans-serif;
+            box-sizing: border-box;
+            background: rgb(31, 31, 31);
+            color: white;
+            text-align: left;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        input{
+            border-radius: 3px;
+            padding: 15px;
+            border: 1px solid grey;
+            color: white;
+            width: 300px;
+            outline: none;
+        }
+        input::placeholder{
+            color: grey;
+            font-size: 1vw;
+        }
+        p{
+            margin: 10px;
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <input type="password" placeholder="Password" id="password">
+        <p id="message">Password is <span id="strength"></span></p>
+    </div>
+
+
+
+
+
+
+<script>
+let pass = document.getElementById("password")
+let msg = document.getElementById("message")
+let str = document.getElementById("strength")
+
+pass.addEventListener("input", function () {
+    if (pass.value.length > 0) {
+        msg.style.display ="block"
+    }
+    else{
+        msg.style.display ="none"
+    }
+    if (pass.value.length < 4) {
+        str.innerHTML = "weak"
+        pass.style.borderColor = "orange"
+        msg.style.color = "orange"
+        str.style.color = "orange"
+    }
+    else if (pass.value.length >= 4 && pass.value.length < 8){
+        str.innerHTML = "medium"
+        pass.style.borderColor = "yellow"
+        msg.style.color = "yellow"
+        str.style.color = "yellow"
+    }
+    else if(pass.value.length >= 8){
+        str.innerHTML = "strong"
+        pass.style.borderColor = "green"
+        msg.style.color = "green"
+        str.style.color = "green"
+    }
+})
+
+</script>
+
+
+</body>
+</html>
